@@ -1,7 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
-$primary: #0074d9;
+$primary: #afc6db;
 $danger: #ff4136;
 
 body {
     background-color: $primary;
+}
+
+.program {
+    margin: 3rem;
 }
