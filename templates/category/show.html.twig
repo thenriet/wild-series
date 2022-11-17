@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>
+		Trouve ta catégorie de séries !
+	</h1>
+	<div class="categories">
+		{% for program in programs %}
+			<div class="program">
+				<h2>{{ program.id }}
+					-
+					<a href="{{ path('program_show', {'id': program.id}) }}">
+						{{ program.title }}
+					</a>
+				</h2>
+				<p>{{ program.synopsis }}</p>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

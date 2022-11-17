@@ -12,9 +12,9 @@ use App\Entity\Program;
 #[Route('/program', name: 'program_')]
 class ProgramController extends AbstractController
 {
-    
-   
-    
+
+
+
     #[Route('/', name: 'index')]
     public function index(ProgramRepository $programRepository): Response
     {
@@ -23,9 +23,9 @@ class ProgramController extends AbstractController
         return $this->render('program/index.html.twig', [
             'website' => 'Wild Series',
             'programs' => $programs,
-         ]);
+        ]);
     }
-    
+
     /*
     #[Route('/list/{page}', requirements: ['page'=>'\d+'], name: 'list')]
 
@@ -37,7 +37,7 @@ class ProgramController extends AbstractController
     }
     */
 
-    #[Route('/show/{id}', methods: ['GET'], requirements: ['id'=>'\d+'], name: 'show')]
+    #[Route('/show/{id}', methods: ['GET'], requirements: ['id' => '\d+'], name: 'show')]
     public function show(int $id = 1, ProgramRepository $programRepository): Response
     {
         $program = $programRepository->findOneBy(['id' => $id]);
