@@ -11,12 +11,19 @@
 			<p>{{ program.synopsis }}</p>
 			<p>Catégorie :
 				{{ program.category.name }}</p>
-			{% for season in seasons %}
-				<p>
-					<a href="/program/{{program.id}}/season/{{season.id}}">Saison
-						{{ season.number }}</a>
-				</p>
-			{% endfor %}
+
+			<ul>
+				{% for episodes in season.episodes %}
+					<li>
+						{{ episodes.title }}
+					</li>
+					<p>
+						{{ episodes.synopsis }}
+
+					</p>
+				{% endfor %}
+			</ul>
+
 		</div>
 	</div>
 	<a href="{{ path('program_index') }}">

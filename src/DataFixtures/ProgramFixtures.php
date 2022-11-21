@@ -11,29 +11,34 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
     const PROGRAMS = [
         [
-            'Title' => 'American Horror Story', 
+            'Title' => 'American Horror Story',
             'Synopsis' => 'Various horror stories with good acting',
-            'Category' => 'Horreur'
+            'Category' => 'Horreur',
+            'Program' => 'program_American-Horror-Story'
         ],
         [
-            'Title' => 'The Office', 
+            'Title' => 'The Office',
             'Synopsis' => 'Hilarious comedy',
-            'Category' => 'Comédie'
+            'Category' => 'Comédie',
+            'Program' => 'program_The-Office'
         ],
         [
-            'Title' => 'Game Of Thrones', 
+            'Title' => 'Game Of Thrones',
             'Synopsis' => 'Epic story in an heroic-fantasy world',
-            'Category' => 'Aventure'
+            'Category' => 'Aventure',
+            'Program' => 'program_Game-Of-Thrones'
         ],
         [
-            'Title' => 'The Walking Dead', 
+            'Title' => 'The Walking Dead',
             'Synopsis' => 'Zombies invading the world',
-            'Category' => 'Horreur'
+            'Category' => 'Horreur',
+            'Program' => 'program_The-Walking-Dead'
         ],
         [
-            'Title' => 'Breaking Bad', 
+            'Title' => 'Breaking Bad',
             'Synopsis' => 'A common chemistry teacher starts cooking meth',
-            'Category' => 'Drame'
+            'Category' => 'Drame',
+            'Program' => 'program_Breaking-Bad'
         ],
     ];
 
@@ -41,18 +46,21 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     {
         // $product = new Product();
         // $manager->persist($product);
-        foreach(self::PROGRAMS as $index => $programs){
+        foreach (self::PROGRAMS as $index => $programs) {
             $program = new Program();
-            foreach($programs as $column => $value){
+            foreach ($programs as $column => $value) {
 
-                if($column === 'Title'){
+                if ($column === 'Title') {
                     $program->setTitle($value);
                 }
-                if($column === 'Synopsis'){
+                if ($column === 'Synopsis') {
                     $program->setSynopsis($value);
                 }
-                if($column === 'Category'){
-                    $program->setCategory($this->getReference('category_' .$value));
+                if ($column === 'Category') {
+                    $program->setCategory($this->getReference('category_' . $value));
+                }
+                if ($column === 'Program') {
+                    $this->addReference($value, $program);
                 }
                 $manager->persist($program);
             }
@@ -64,7 +72,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     {
         // Tu retournes ici toutes les classes de fixtures dont ProgramFixtures dépend
         return [
-          CategoryFixtures::class,
+            CategoryFixtures::class,
         ];
     }
 }
