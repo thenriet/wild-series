@@ -14,31 +14,36 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             'Number' => '1',
             'Year' => '2000',
             'Description' => 'Saison 1',
-            'Program' => 'The-Walking-Dead'
+            'Program' => 'The-Walking-Dead',
+            'Season' => 'Saison-1'
         ],
         [
             'Number' => '2',
             'Year' => '2001',
             'Description' => 'Saison 2',
-            'Program' => 'The-Walking-Dead'
+            'Program' => 'The-Walking-Dead',
+            'Season' => 'Saison-2'
         ],
         [
             'Number' => '3',
             'Year' => '2002',
             'Description' => 'Saison 3',
-            'Program' => 'The-Walking-Dead'
+            'Program' => 'The-Walking-Dead',
+            'Season' => 'Saison-3'
         ],
         [
             'Number' => '4',
             'Year' => '2003',
             'Description' => 'Saison 4',
-            'Program' => 'The-Walking-Dead'
+            'Program' => 'The-Walking-Dead',
+            'Season' => 'Saison-4'
         ],
         [
             'Number' => '5',
             'Year' => '2004',
             'Description' => 'Saison 5',
-            'Program' => 'The-Walking-Dead'
+            'Program' => 'The-Walking-Dead',
+            'Season' => 'Saison-5'
         ],
     ];
 
@@ -63,6 +68,9 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
                 if ($column === 'Program') {
                     $season->setProgram($this->getReference('program_' . $value));
                 }
+                if ($column === 'Season') {
+                    $this->addReference($value, $season);
+                }
                 $manager->persist($season);
             }
         }
@@ -74,6 +82,10 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
         // Tu retournes ici toutes les classes de fixtures dont SeasonFixtures dépend
         return [
             ProgramFixtures::class,
+        ];
+
+        return [
+            EpisodeFixtures::class,
         ];
     }
 }

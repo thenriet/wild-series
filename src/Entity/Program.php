@@ -29,8 +29,7 @@ class Program
     private $category;
 
     #[ORM\OneToMany(mappedBy: 'program', targetEntity: Season::class)]
-    private $seasons;
-
+    private Collection $seasons;
 
     public function __construct()
     {
@@ -97,6 +96,7 @@ class Program
     {
         return $this->seasons;
     }
+
 
     public function addSeason(Season $season): self
     {

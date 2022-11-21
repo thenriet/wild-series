@@ -10,20 +10,16 @@
 			<h1 class="mt-0">{{ program.title }}</h1>
 			<p>{{ program.synopsis }}</p>
 			<p>Catégorie :
-				{{ program.category.name }}</p>
+				{{ program.category.name }}
 
+			</p>
 			<ul>
-				{% for episodes in season.episodes %}
-					<li>
-						{{ episodes.title }}
-					</li>
-					<p>
-						{{ episodes.synopsis }}
+				{% for episode in episodes %}
 
-					</p>
+
+					<li>{{episode.title}}</li>
 				{% endfor %}
 			</ul>
-
 		</div>
 	</div>
 	<a href="{{ path('program_index') }}">

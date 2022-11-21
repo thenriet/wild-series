@@ -33,7 +33,7 @@ class Season
 
     public function __construct()
     {
-        $this->episode = new ArrayCollection();
+        $this->episodes = new ArrayCollection();
     }
 
     public function getId(): ?int
